@@ -1,0 +1,138 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style1.css">
+    <title>ContactMe</title>
+
+<script>
+function printError(elemId, hintMsg) {
+    document.getElementById(elemId).innerHTML = hintMsg;
+}
+
+function validateForm() {
+   
+    var fname = document.contactForm.firstName.value;
+    var lname = document.contactForm.lastName.value;
+    var email = document.contactForm.email.value;
+    var mobile = document.contactForm.number.value;
+    var message = document.contactForm.message.value;
+
+    var fnameErr = emailErr = mobileErr = lnameErr = mesageErr = true;
+    
+    // Validate fname
+    if(fname == "") {
+        printError("fnameErr", "Please enter your first name");
+    } else {
+        var regex = /^[a-zA-Z\s]+$/;                
+        if(regex.test(name) === false) {
+            printError("fnameErr", "Please enter a valid name");
+        } else {
+            printError("fnameErr", "");
+            nameErr = false;
+        }
+    }
+
+    // Validate lname
+    if(fname == "") {
+        printError("lnameErr", "Please enter your last name");
+    } else {
+        var regex = /^[a-zA-Z\s]+$/;                
+        if(regex.test(name) === false) {
+            printError("lnameErr", "Please enter a valid name");
+        } else {
+            printError("lnameErr", "");
+            nameErr = false;
+        }
+    }
+    
+    // Validate email address
+    if(email == "") {
+        printError("emailErr", "Please enter your email address");
+    } else {
+        // Regular expression for basic email validation
+        var regex = /^\S+@\S+\.\S+$/;
+        if(regex.test(email) === false) {
+            printError("emailErr", "Please enter a valid email address");
+        } else{
+            printError("emailErr", "");
+            emailErr = false;
+        }
+    }
+    
+    // Validate mobile number
+    if(mobile == "") {
+        printError("mobileErr", "Please enter your mobile number");
+    } else {
+        var regex = /^[1-9]\d{9}$/;
+        if(regex.test(mobile) === false) {
+            printError("mobileErr", "Please enter a valid 10 digit mobile number");
+        } else{
+            printError("mobileErr", "");
+            mobileErr = false;
+        }
+    }
+    
+    
+    // Prevent the form from being submitted if there are any errors
+    if((fnameErr || emailErr || mobileErr || lnameErr || messageErr) == true) {
+       return false;
+    } else {
+        // Creating a string from input data for preview
+        var dataPreview = "You've entered the following details: \n" +
+                          "Full Name: " + fname + "\n" +
+                          "Email Address: " + email + "\n" +
+                          "Mobile Number: " + mobile + "\n" +
+                          
+     
+        // Display input data in a dialog box before submitting the form
+        alert(dataPreview);
+    }
+};
+</script>
+</head>
+<body>
+    <header>
+            <ul class="na">
+                <li><a  style="text-decoration:none" href="./Home.html">Home</a></li>
+                <li><a  style="text-decoration:none" href="./AboutMe.html">About Me</a></li>
+                <li><a  style="text-decoration:none" href="./ContactMe.html">Contact Me</a></li>
+                <li><a  style="text-decoration:none" href="./MyGallery.html">My Gallery</a></li> 
+            </ul>
+
+    </header>
+
+    <main>
+
+        <div class="form-container">
+            <form action="" name = "myForm" onsubmit = "return(validate());" >
+                <label for="firstName">First Name</label>
+                <input type="text" name="firstName" placeholder="Enter First Name"  autocomplete="off"/>
+
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" placeholder="Enter Last Name" autocomplete="off" />
+
+                <label for="email">Email</label>
+                <input type="email" name="email" placeholder="Enter ur mail addess" autocomplete="off" />
+
+                <label for="number">Mobile Number</label>
+                <input type="text" name="number" placeholder="Enter mobile number" autocomplete="off" />
+
+                <label for="message">Message</label>
+                <textarea name="message" placeholder="Write your message" style="height: 100px;"></textarea>
+
+                
+                <div style="display: flex; width: 25%; margin: auto;">
+                    <input type="submit" value="submit">
+                </div>
+            </form>
+        </div>
+        
+    </main>
+
+</body>
+</html>
+
+
